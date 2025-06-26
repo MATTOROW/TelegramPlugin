@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="TelegramPlugin"/>  
+  <!-- add our web resources -->  
+  <web-resource key="TelegramPlugin-resources" name="TelegramPlugin Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="TelegramPlugin.css" location="/css/TelegramPlugin.css"/>  
+    <resource type="download" name="TelegramPlugin.js" location="/js/TelegramPlugin.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>TelegramPlugin</context> 
+  </web-resource>  
+  <servlet key="telegram-binding-servlet" class="com.mattorow.jiraplugin.servlet.TelegramBindingServlet"> 
+    <url-pattern>/telegram-bind</url-pattern> 
+  </servlet>  
+  <property key="telegram.bot.token">${telegram.bot.token}</property>
+</atlassian-plugin>
